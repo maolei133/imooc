@@ -26,7 +26,7 @@ public class WSServerInitializer extends ChannelInitializer<SocketChannel> {
 		// websocket 服务器处理的协议，用于指定给客户端连接访问的路由:/ws
 		pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
 		
-		pipeline.addLast(null);
+		pipeline.addLast(new ChatHandler());
 	}
 
 }
