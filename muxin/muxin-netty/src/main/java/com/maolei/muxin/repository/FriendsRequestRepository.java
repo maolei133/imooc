@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.support.JpaRepositoryImplementati
 import com.maolei.muxin.pojo.FriendsRequest;
 
 public interface FriendsRequestRepository
-        extends JpaRepositoryImplementation<FriendsRequest, String> {
+        extends JpaRepositoryImplementation<FriendsRequest, Long> {
 
 }

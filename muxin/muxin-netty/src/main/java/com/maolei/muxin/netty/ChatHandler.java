@@ -1,8 +1,6 @@
 package com.maolei.muxin.netty;
 
 import java.time.LocalDateTime;
-
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -30,9 +28,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 		String content = msg.text();
 		System.out.println(ctx.channel().remoteAddress() + ": " + content);
 
-		for (Channel channel : group) {
-			channel.writeAndFlush(new TextWebSocketFrame("[服务器收到消息: " + content + "] " + LocalDateTime.now()));
-		}
+		group.writeAndFlush(new TextWebSocketFrame("[服务器收到消息: " + content + "] " + LocalDateTime.now()));
 	}
 
 	@Override

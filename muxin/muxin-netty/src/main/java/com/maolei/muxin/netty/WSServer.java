@@ -1,5 +1,6 @@
 package com.maolei.muxin.netty;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Component;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -37,21 +38,7 @@ public class WSServer {
     }
 
     public static void main(String[] args) throws Exception {
-        EventLoopGroup master = new NioEventLoopGroup();
-        EventLoopGroup slave = new NioEventLoopGroup();
-
-        try {
-            ServerBootstrap server = new ServerBootstrap();
-            server.group(master, slave).channel(NioServerSocketChannel.class).childHandler(null);
-
-            ChannelFuture future = server.bind(8088).sync();
-
-            future.channel().closeFuture().sync();
-        } finally {
-            master.shutdownGracefully();
-            slave.shutdownGracefully();
-        }
-
+       System.out.println(RandomStringUtils.randomNumeric(8));
     }
 
 }
